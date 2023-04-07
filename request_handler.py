@@ -2,8 +2,10 @@ import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from views import (get_all_animals,
             get_single_animal,
+            create_animal,
             get_all_locations,
             get_single_location,
+            create_location,
             get_all_customers,
             get_single_customer,
             get_all_employees,
@@ -61,6 +63,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 
     #     # else:
     #     #     response = []
+
     #     if self.path == "/animals":
     #         response = get_all_animals()
     #     else:
@@ -132,22 +135,50 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         return (resource, id)  # This is a tuple
 
-    # Here's a method on the class that overrides the parent's method.
-    # It handles any POST request.
+    # # Here's a method on the class that overrides the parent's method.
+    # # It handles any POST request.
 
-    # The do_POST() method is similarly implemented to handle incoming HTTP POST requests,
-    # reading the request body and echoing it back to the client
-    # as a JSON payload in the response body.
+    # # The do_POST() method is similarly implemented to handle incoming HTTP POST requests,
+    # # reading the request body and echoing it back to the client
+    # # as a JSON payload in the response body.
+    # def do_POST(self):
+    #     """Handles POST requests to the server"""
+
+    #     # Set response code to 'Created'
+    #     self._set_headers(201)
+
+    #     content_len = int(self.headers.get('content-length', 0))
+    #     post_body = self.rfile.read(content_len)
+    #     response = {"payload": post_body}
+    #     self.wfile.write(json.dumps(response).encode())
+
     def do_POST(self):
-        """Handles POST requests to the server"""
-
-        # Set response code to 'Created'
+        """POST creates new resource"""
         self._set_headers(201)
-
         content_len = int(self.headers.get('content-length', 0))
         post_body = self.rfile.read(content_len)
-        response = {"payload": post_body}
-        self.wfile.write(json.dumps(response).encode())
+
+        # Convert JSON string to a Python dictionary
+        post_body = json.loads(post_body)
+
+        # Parse the URL
+        (resource, id) = self.parse_url(self.path)
+
+        # Initialize new animal
+        new_animal = None
+        new_location = None
+
+        # Add a new animal to the list
+        if resource == "animals":
+            new_animal = create_animal(post_body)
+
+        # Encode the new animal and send in response 
+        # NULL ERROR HERE ????
+        self.wfile.write(json.dumps(new_animal).encode())
+
+        if resource == "locations":
+            new_location = create_location(post_body)
+        self.wfile.write(json.dumps(new_location).encode())
 
     # A method that handles any PUT request.
     def do_PUT(self):
