@@ -33,7 +33,7 @@ curl -L -s 'https://raw.githubusercontent.com/github/gitignore/master/Python.git
 ## Tuples 
 - https://www.youtube.com/watch?v=NI26dqhs2Rk
 
-##JSON in Python
+## JSON in Python
 - https://www.youtube.com/watch?v=pTT7HMqDnJw 
 
 # Don't forget to refresh the Debugger

@@ -37,11 +37,7 @@ def create_location(location):
     """for do_POST
     """
     max_id = LOCATIONS[-1]["id"]
-
     new_id = max_id + 1
-
     location["id"] = new_id
-
     LOCATIONS.append(location)
-
     return location

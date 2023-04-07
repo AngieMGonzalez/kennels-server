@@ -8,8 +8,10 @@ from views import (get_all_animals,
             create_location,
             get_all_customers,
             get_single_customer,
+            create_customer,
             get_all_employees,
-            get_single_employee)
+            get_single_employee,
+            create_employee)
 
 # Here's a class. It inherits from another class.
 # For now, think of a class as a container for functions that
@@ -167,18 +169,26 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Initialize new animal
         new_animal = None
         new_location = None
+        new_employee = None
+        new_customer = None
 
         # Add a new animal to the list
         if resource == "animals":
             new_animal = create_animal(post_body)
-
-        # Encode the new animal and send in response 
-        # NULL ERROR HERE ????
-        self.wfile.write(json.dumps(new_animal).encode())
+        # Encode the new animal and send in response
+            self.wfile.write(json.dumps(new_animal).encode())
 
         if resource == "locations":
             new_location = create_location(post_body)
-        self.wfile.write(json.dumps(new_location).encode())
+            self.wfile.write(json.dumps(new_location).encode())
+
+        if resource == "employees":
+            new_employee = create_employee(post_body)
+            self.wfile.write(json.dumps(new_employee).encode())
+
+        if resource == "customers":
+            new_customer = create_customer(post_body)
+            self.wfile.write(json.dumps(new_customer).encode())
 
     # A method that handles any PUT request.
     def do_PUT(self):
