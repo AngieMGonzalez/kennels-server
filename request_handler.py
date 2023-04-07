@@ -3,15 +3,19 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from views import (get_all_animals,
             get_single_animal,
             create_animal,
+            delete_animal,
             get_all_locations,
             get_single_location,
             create_location,
+            delete_location,
             get_all_customers,
             get_single_customer,
             create_customer,
+            delete_customer,
             get_all_employees,
             get_single_employee,
-            create_employee)
+            create_employee,
+            delete_employee)
 
 # Here's a class. It inherits from another class.
 # For now, think of a class as a container for functions that
@@ -86,28 +90,24 @@ class HandleRequests(BaseHTTPRequestHandler):
         if resource == "animals":
             if id is not None:
                 response = get_single_animal(id)
-
             else:
                 response = get_all_animals()
 
         if resource == "locations":
             if id is not None:
                 response = get_single_location(id)
-
             else:
                 response = get_all_locations()
 
         if resource == "customers":
             if id is not None:
                 response = get_single_customer(id)
-
             else:
                 response = get_all_customers()
 
         if resource == "employees":
             if id is not None:
                 response = get_single_employee(id)
-
             else:
                 response = get_all_employees()
 
@@ -220,6 +220,27 @@ class HandleRequests(BaseHTTPRequestHandler):
                         'X-Requested-With, Content-Type, Accept')
         self.end_headers()
 
+    def do_DELETE(self):
+        """deletes element from list. This is still in class HandleRequests
+        """
+        # Set a 204 response code
+        self._set_headers(204)
+
+        # Parse the URL
+        (resource, id) = self.parse_url(self.path)
+
+        # Delete a single resource from the list
+        if resource == "animals":
+            delete_animal(id)
+        if resource == "customers":
+            delete_customer(id)
+        if resource == "employees":
+            delete_employee(id)
+        if resource == "locations":
+            delete_location(id)
+
+        # Encode the new animal and send in response
+        self.wfile.write("".encode())
 
 # This function is not inside the class. It is the starting
 # point of this application.
