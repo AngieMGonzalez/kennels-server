@@ -54,3 +54,7 @@ curl -L -s 'https://raw.githubusercontent.com/github/gitignore/master/Python.git
 ## 204 No Content HTTP Response Status Code
 - the server has fulfilled the request but does not need to return an entity-body, and might want to return updated meta-information
 - the 204 response MUST NOT include a message-body, and thus is always terminated by the first empty line after the header fields
+
+## UPDATE: PUT vs PATCH HTTP methods used to updated a resource on a server
+- PUT REPLACES the ENTIRE resource with the new data provided in the request body
+- PATCH is used to UPDATE a part of a resource. AKA you only need to provide the changes you want to make, and the server will apply those changes to the existing resource. In Postman, you can use the PATCH method to update a resource by sending a request with only the changed properties in the request body. 

@@ -51,3 +51,11 @@ def delete_location(id):
             location_index = index
     if location_index >= 0:
         LOCATIONS.pop(location_index)
+
+def update_location(id, new_location):
+    """POST will replace whole resource with UPDATE
+    """
+    for index, location in enumerate(LOCATIONS):
+        if location["id"] == id:
+            LOCATIONS[index] = new_location
+            break
