@@ -1,7 +1,8 @@
 CUSTOMERS = [
     {
         "id": 1,
-        "name": "Ryan Tony"
+        "full_name": "Ryan Tony",
+        "email": "ryan@tony.com"
     }
 ]
 
@@ -26,3 +27,12 @@ def get_single_customer(id):
             requested_customer = customer
 
     return requested_customer
+
+def create_customer(customer):
+    """for do_POST
+    """
+    max_id = CUSTOMERS[-1]["id"]
+    new_id = max_id + 1
+    customer["id"] = new_id
+    CUSTOMERS.append(customer)
+    return customer
