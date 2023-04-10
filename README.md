@@ -58,3 +58,16 @@ curl -L -s 'https://raw.githubusercontent.com/github/gitignore/master/Python.git
 ## UPDATE: PUT vs PATCH HTTP methods used to updated a resource on a server
 - PUT REPLACES the ENTIRE resource with the new data provided in the request body
 - PATCH is used to UPDATE a part of a resource. AKA you only need to provide the changes you want to make, and the server will apply those changes to the existing resource. In Postman, you can use the PATCH method to update a resource by sending a request with only the changed properties in the request body. 
+
+## Classes
+- https://www.youtube.com/watch?v=apACNr7DC_s 
+- we only used function based components in React Next.js
+- now, class based component
+- OOP object oriented programming = deals w/ class components and constructors
+- re-usable data frameworks 
+- a function inside a class is an initializer method or `init method` (sometimes called constructors)
+- access last string in array with `[-1]`
+- classes group together data in `fields`
+- and they group together related functions called `methods` 
+- it's like a factory or blueprint for many objects are `instances` 
+- Functions need to be invoked for the plan to run. Classes need to be instantiated to create an object from its design
