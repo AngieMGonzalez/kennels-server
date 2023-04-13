@@ -86,7 +86,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         """GET
         """
         self._set_headers(200)
-        response = {}  # Default response
+        response = {}  # Default response empty dictionary
 
         # Parse the URL and capture the tuple that is returned
         (resource, id) = self.parse_url(self.path)
@@ -206,7 +206,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Parse the URL
         (resource, id) = self.parse_url(self.path)
 
-        # Delete a single animal from the list
+        # replaces a single animal from the list
         if resource == "animals":
             update_animal(id, post_body)
         if resource == "customers":
