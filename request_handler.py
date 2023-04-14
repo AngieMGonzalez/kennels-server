@@ -85,7 +85,7 @@ class HandleRequests(BaseHTTPRequestHandler):
     def do_GET(self):
         """GET
         """
-        self._set_headers(200)
+        # self._set_headers(200)
         response = {}  # Default response empty dictionary
 
         # Parse the URL and capture the tuple that is returned
@@ -94,6 +94,13 @@ class HandleRequests(BaseHTTPRequestHandler):
         if resource == "animals":
             if id is not None:
                 response = get_single_animal(id)
+
+                if response is not None:
+                    self._set_headers(200)
+                else:
+                    self._set_headers(404)
+                    response = { "message": f"Animal {id} is out playing right now" }
+
             else:
                 response = get_all_animals()
 
