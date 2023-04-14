@@ -71,3 +71,7 @@ curl -L -s 'https://raw.githubusercontent.com/github/gitignore/master/Python.git
 - and they group together related functions called `methods` 
 - it's like a factory or blueprint for many objects are `instances` 
 - Functions need to be invoked for the plan to run. Classes need to be instantiated to create an object from its design
+
+# Hot keys
+- fn shift f5 to end debugger
+- fn f5 to start debugger
