@@ -1,25 +1,25 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from views import (get_all_animals,
-            get_single_animal,
-            create_animal,
-            delete_animal,
-            update_animal,
-            get_all_locations,
-            get_single_location,
-            create_location,
-            delete_location,
-            update_location,
-            get_all_customers,
-            get_single_customer,
-            create_customer,
-            delete_customer,
-            update_customer,
-            get_all_employees,
-            get_single_employee,
-            create_employee,
-            delete_employee,
-            update_employee)
+                   get_single_animal,
+                   create_animal,
+                   delete_animal,
+                   update_animal,
+                   get_all_locations,
+                   get_single_location,
+                   create_location,
+                   delete_location,
+                   update_location,
+                   get_all_customers,
+                   get_single_customer,
+                   create_customer,
+                   delete_customer,
+                   update_customer,
+                   get_all_employees,
+                   get_single_employee,
+                   create_employee,
+                   delete_employee,
+                   update_employee)
 
 # Here's a class. It inherits from another class.
 # For now, think of a class as a container for functions that
@@ -35,6 +35,7 @@ from views import (get_all_animals,
 # and overrides several of its methods,
 # including do_GET(), do_POST(), do_PUT(), and do_OPTIONS(),
 # to handle incoming HTTP requests of different types.
+
 
 class HandleRequests(BaseHTTPRequestHandler):
     # This is a Docstring it should be at the beginning of all classes and functions
@@ -99,7 +100,8 @@ class HandleRequests(BaseHTTPRequestHandler):
                     self._set_headers(200)
                 else:
                     self._set_headers(404)
-                    response = { "message": f"Animal {id} is out playing right now" }
+                    response = {
+                        "message": f"Animal {id} is out playing right now"}
 
             else:
                 response = get_all_animals()
@@ -190,9 +192,8 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Add a new animal to the list
         if resource == "animals":
-            animals_list = ["name", "species", "status", "locationId", "customerId"]
             # new_animal = create_animal(post_body)
-            if "name" in post_body and "species" in post_body "status" in post_body "locationId" in post_body "customerId" in post_body:
+            if "name" in post_body and "species" in post_body and "status" in post_body and "locationId" in post_body and "customerId" in post_body:
                 self._set_headers(201)
                 new_animal = create_animal(post_body)
             else:
@@ -324,6 +325,8 @@ class HandleRequests(BaseHTTPRequestHandler):
 # Finally, the main() function at the end of the file starts the server on port 8088
 # and listens for incoming requests indefinitely,
 # using the HTTPServer class also from the http.server module.
+
+
 def main():
     """Starts the server on port 8088 using the HandleRequests class
     """
