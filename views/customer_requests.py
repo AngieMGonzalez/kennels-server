@@ -3,6 +3,21 @@ CUSTOMERS = [
         "id": 1,
         "full_name": "Ryan Tony",
         "email": "ryan@tony.com"
+    },
+    {
+        "id": 2,
+        "full_name": "Bryan Toni",
+        "email": "bryan@toni.com"
+    },
+    {
+        "id": 3,
+        "full_name": "Cyan Bony",
+        "email": "cyan@bony.com"
+    },
+    {
+        "id": 4,
+        "full_name": "Dyan Dony",
+        "email": "dyan@dony.com"
     }
 ]
 
