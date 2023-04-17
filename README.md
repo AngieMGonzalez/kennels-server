@@ -71,3 +71,13 @@ curl -L -s 'https://raw.githubusercontent.com/github/gitignore/master/Python.git
 - and they group together related functions called `methods` 
 - it's like a factory or blueprint for many objects are `instances` 
 - Functions need to be invoked for the plan to run. Classes need to be instantiated to create an object from its design
+
+## SQL
+- Structured Query Language
+- https://www.youtube.com/watch?v=27axs9dO7AE
+- [creating tables](https://www.youtube.com/watch?v=SPPTQwx4FfE&t=300s)
+- sql reserve words: `CREATE TABLE`
+- [inserting data](https://www.youtube.com/watch?v=3Qq93zqO3GE)
+- [constraints](https://www.youtube.com/watch?v=9WP35xwZ3tk)
+- keybinding shortcut: Sqlite: Run Selected Query = Hold down the Command key and tap R twice
+- Sqlite: Open Database
