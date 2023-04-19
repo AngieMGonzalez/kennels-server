@@ -80,4 +80,6 @@ curl -L -s 'https://raw.githubusercontent.com/github/gitignore/master/Python.git
 - [inserting data](https://www.youtube.com/watch?v=3Qq93zqO3GE)
 - [constraints](https://www.youtube.com/watch?v=9WP35xwZ3tk)
 - keybinding shortcut: Sqlite: Run Selected Query = Hold down the Command key and tap R twice
-- Sqlite: Open Database
+- `cmd+shift+p` Sqlite: Open Database
+- [SELECT](https://www.youtube.com/watch?v=YufocuHbYZo)
+- [SELECT cont](https://www.youtube.com/watch?v=PkJKzR_sClM)
