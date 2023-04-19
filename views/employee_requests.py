@@ -26,9 +26,9 @@ def get_all_employees():
         # Write the SQL query to get the information you want
         db_cursor.execute("""
         SELECT
-            a.id,
-            a.name
-        FROM employee a
+            e.id,
+            e.name
+        FROM employee e
         """)
 
         # Initialize an empty list to hold all employee representations
@@ -77,10 +77,10 @@ def get_single_employee(id):
         # into the SQL statement.
         db_cursor.execute("""
         SELECT
-            a.id,
-            a.name
-        FROM employee a
-        WHERE a.id = ?
+            e.id,
+            e.name
+        FROM employee e
+        WHERE e.id = ?
         """, ( id, ))
 
         # Load the single result into memory
@@ -117,3 +117,27 @@ def update_employee(id, new_employee):
         if employee["id"] == id:
             EMPLOYEES[index] = new_employee
             break
+
+def get_employees_by_location(location_id):
+    """gets employees by their location ID"""
+    with sqlite3.connect("./kennel.sqlite3") as conn:
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+
+        # Write the SQL query to get the information you want
+        db_cursor.execute("""
+        select
+            e.id,
+            e.name
+        from Employee e
+        WHERE e.location_id = ?
+        """, (location_id, ))
+
+        employees = []
+        dataset = db_cursor.fetchall()
+
+        for row in dataset:
+            employee = Employee(row['id'], row['name'])
+            employees.append(employee.__dict__)
+
+    return employees

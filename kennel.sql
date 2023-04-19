@@ -72,10 +72,47 @@ FROM animal a
 WHERE a.id = 3;
 
 SELECT
+    c.id,
+    c.name,
+    c.address,
+    c.email,
+    c.password
+FROM customer c
+WHERE c.id = 3;
+
+SELECT
+    c.id,
+    c.name,
+    c.address,
+    c.email,
+    c.password
+FROM customer c
+WHERE c.email = "mo@silvera.com";
+
+SELECT
     a.id,
     a.name,
-    a.address,
-    a.email,
-    a.password
-FROM customer a
-WHERE a.id = 1;
+    a.breed,
+    a.status,
+    a.location_id,
+    a.customer_id
+FROM animal a
+WHERE a.location_id = 1;
+
+SELECT
+    e.id,
+    e.name,
+    e.address,
+    e.location_id
+FROM employee e
+WHERE e.location_id = 2;
+
+SELECT
+    a.id,
+    a.name,
+    a.breed,
+    a.status,
+    a.location_id,
+    a.customer_id
+FROM animal a
+WHERE a.status = "Treatment";
