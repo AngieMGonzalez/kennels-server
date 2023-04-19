@@ -100,15 +100,26 @@ def create_employee(employee):
     EMPLOYEES.append(employee)
     return employee
 
+# def delete_employee(id):
+#     """deletes an element from list
+#     """
+#     employee_index = -1
+#     for index, employee in enumerate(EMPLOYEES):
+#         if employee["id"] == id:
+#             employee_index = index
+#     if employee_index >= 0:
+#         EMPLOYEES.pop(employee_index)
+
 def delete_employee(id):
-    """deletes an element from list
+    """Deletes single employee
     """
-    employee_index = -1
-    for index, employee in enumerate(EMPLOYEES):
-        if employee["id"] == id:
-            employee_index = index
-    if employee_index >= 0:
-        EMPLOYEES.pop(employee_index)
+    with sqlite3.connect("./kennel.sqlite3") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM employee
+        WHERE id = ?
+        """, (id, ))
 
 def update_employee(id, new_employee):
     """POST will replace whole resource with UPDATE
