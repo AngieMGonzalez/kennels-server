@@ -85,3 +85,6 @@ curl -L -s 'https://raw.githubusercontent.com/github/gitignore/master/Python.git
 - [SELECT cont](https://www.youtube.com/watch?v=PkJKzR_sClM)
 - [UPDATE](https://www.youtube.com/watch?v=cd-hSl7_pGQ) `SET` `WHERE` `IN()`
 - [UPDATE and DELETE FROM](https://www.youtube.com/watch?v=rT7BhXLfhds) `OR` `AND`
+- [SQL Joins explained](https://www.youtube.com/watch?v=9yeOJ0ZMUYw)
+- [SQL Joins examples](https://www.youtube.com/watch?v=Jh_pvk48jHA)
+- [SQL Joins Tutorial to begin](https://www.youtube.com/watch?v=2HVMiPPuPIM)

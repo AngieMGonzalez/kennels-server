@@ -1,6 +1,6 @@
 import sqlite3
 import json
-from models import Employee
+from models import Employee, Location
 
 EMPLOYEES = [
     {
@@ -27,8 +27,14 @@ def get_all_employees():
         db_cursor.execute("""
         SELECT
             e.id,
-            e.name
+            e.name,
+            e.address,
+            e.location_id,
+            l.name location_name,
+            l.address location_address
         FROM employee e
+        JOIN Location l
+            ON l.id = e.location_id
         """)
 
         # Initialize an empty list to hold all employee representations
@@ -40,11 +46,19 @@ def get_all_employees():
         # Iterate list of data returned from database
         for row in dataset:
 
-            # Create an employee instance from the current row.
-            # Note that the database fields are specified in
-            # exact order of the parameters defined in the
-            # Employee class above.
-            employee = Employee(row['id'], row['name'])
+            # # Create an employee instance from the current row.
+            # # Note that the database fields are specified in
+            # # exact order of the parameters defined in the
+            # # Employee class above.
+            # employee = Employee(row['id'], row['name'])
+
+            # employees.append(employee.__dict__)
+
+            employee = Employee(row['id'], row['name'], row['address'], row['location_id'])
+
+            location = Location(row['id'], row['name'], row['address'])
+
+            employee.location = location.__dict__
 
             employees.append(employee.__dict__)
 
@@ -78,7 +92,9 @@ def get_single_employee(id):
         db_cursor.execute("""
         SELECT
             e.id,
-            e.name
+            e.name,
+            e.address,
+            e.location_id
         FROM employee e
         WHERE e.id = ?
         """, ( id, ))
@@ -87,7 +103,8 @@ def get_single_employee(id):
         data = db_cursor.fetchone()
 
         # Create an employee instance from the current row
-        employee = Employee(data['id'], data['name'])
+        employee = Employee(data['id'], data['name'],
+                            data['address'], data['location_id'])
 
         return employee.__dict__
 
@@ -139,7 +156,9 @@ def get_employees_by_location(location_id):
         db_cursor.execute("""
         select
             e.id,
-            e.name
+            e.name,
+            e.address,
+            e.location_id
         from Employee e
         WHERE e.location_id = ?
         """, (location_id, ))
@@ -148,7 +167,7 @@ def get_employees_by_location(location_id):
         dataset = db_cursor.fetchall()
 
         for row in dataset:
-            employee = Employee(row['id'], row['name'])
+            employee = Employee(row['id'], row['name'], row['address'], row['location_id'])
             employees.append(employee.__dict__)
 
     return employees
