@@ -83,3 +83,5 @@ curl -L -s 'https://raw.githubusercontent.com/github/gitignore/master/Python.git
 - `cmd+shift+p` Sqlite: Open Database
 - [SELECT](https://www.youtube.com/watch?v=YufocuHbYZo)
 - [SELECT cont](https://www.youtube.com/watch?v=PkJKzR_sClM)
+- [UPDATE](https://www.youtube.com/watch?v=cd-hSl7_pGQ) `SET` `WHERE` `IN()`
+- [UPDATE and DELETE FROM](https://www.youtube.com/watch?v=rT7BhXLfhds) `OR` `AND`
