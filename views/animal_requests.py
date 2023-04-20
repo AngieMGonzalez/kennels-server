@@ -92,10 +92,10 @@ def get_all_animals():
 
             # Create a Location instance from the current row
             location = Location(
-                row['id'], row['location_name'], row['location_address'])
+                row['location_id'], row['location_name'], row['location_address'])
             # Create a Customer instance from the current row
             customer = Customer(
-                row['id'], row['customer_name'],
+                row['customer_id'], row['customer_name'],
                 row['customer_address'], row['customer_email'], row['customer_password'])
 
         #     self.id = id
